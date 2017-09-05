@@ -1,0 +1,41 @@
+The Village - Coding Exercise
+
+In the depths of New England, there is a lost village. We need you to do a simulation of the village. Given some rules & initial conditions, we'd like you to be able to give us the state of the village within an arbitrary number of days. No graphics are necessary, simply information about each citizen: their state, hunger, and health
+
+Each citizen has two attributes:
+- Hunger (0-9)
+- Health (0-99)
+
+The village has many different citizens:
+
+- Humans
+Ordinary people, like you and me
+- Vampires
+Vampires are creatures of the night. They "feed" on humans by lowering their health and raising their own. They can also convert humans into vampires.
+- Werewolves
+Humans who turn into powerful wolves during the full moon. When they do, they attack viciously anyone nearby. Any human who is injured (even scratched) by a werewolf becomes a werewolf themselves.
+
+Each "day" consists of a turn. During a turn, the following things can happen:
+
+- Humans
+Humans' hunger increases every turn. If their hunger is already 9, they lose 5 health. Yes, the village is dying, there is no food for humans.
+
+- Vampires
+Vampires will attempt a conversion of a human once a day. There are 4 possible outcomes: 
+1) They convert a human, they succeed, the human becomes a vampire, their hunger is reduced by half and their health increases by 10 
+2) They attempt to convert a human, they kill the human instead. Their health is increased by 50.
+3) They attempt to convert a human, they fail, but the human survives. The vampire gains 1 health per 5 health he can take from the human, up to 25 max (it will attempt to get as much as possible. If the human is killed, see #2).
+4) They attempt to convert a human who is actually a werewolf (but not in werewolf form), reducing between 5-40 health from the target. They gain no health from this encounter. This human cannot be converted to a vampire, so they just lose health.
+
+- Werewolves
+They behave as normal humans, except every 7 days, they become a werewolf.
+When they are a werewolf, they act differently. When in this state, they will try and feed. In a feeding, they will reduce between 30-80 health from a human. If they try and fail to reduce a human's health to 0, that human then becomes a werewolf. Werewolves cannot be converted to vampires, only killed by vampires. If a werewolf encounters a vampire, they will reduce between 10-30 health of the vampire.
+Werewolves have healing power. They heal 5 health per day as humans, 10 health when they're a werewolf.
+
+
+Other notes:
+- Turn order is considered to be random. No citizen is known to act before any other citizen in a day.
+- The simulation ends early if there are no valid actions left for any citizen.
+- Dead citizens take no actions.
+- The state of the system should be output as a list of all of the citizens, their state (human, vampire, or werewolf), their hunger, and their health. Any summary statistics/information is up to you.
+
